@@ -42,9 +42,23 @@ const deleteUser = async(req, res, next) => {
   }
 }
 
+// VERIFICAR SI HAY CAMPOS VACÍOS Y HACER UPDATES SEGÚN CORRESPONDA 
+const updateUser = async(req, res, next) => {
+  try {
+    const { name, password, email } = req.body;
+    const user = await usersServices.updateUser({ name, password, email });
+    
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 module.exports = {
   getAllUsers,
   createUser,
   getUser,
   deleteUser,
+  updateUser,
 }

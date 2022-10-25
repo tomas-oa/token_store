@@ -1,10 +1,10 @@
 const {
   getAllTokensDB,
-  updatePriceDB,
+  updatePriceDB
 } = require("../db/tokens.db");
 
-class TokensServices {
-  getAllTokens = async() => {
+class TokensService {
+  getAllTokens = async () => {
     try {
       return await getAllTokensDB();
     } catch (error) {
@@ -12,7 +12,7 @@ class TokensServices {
     }
   }
 
-  updatePrice = async(price, id) => {
+  updatePrice = async ({ price, id }) => {
     try {
       return await updatePriceDB({ price, id });
     } catch (error) {
@@ -21,4 +21,4 @@ class TokensServices {
   }
 }
 
-module.exports = new TokensServices();
+module.exports = new TokensService();

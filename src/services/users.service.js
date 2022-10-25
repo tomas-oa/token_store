@@ -3,6 +3,7 @@ const {
   createUserDB,
   getUserDB,
   deleteUserDB,
+  updateUserDB,
 } = require("../db/users.db");
 
 class UsersServices {
@@ -33,6 +34,14 @@ class UsersServices {
   deleteUser = async(id) => {
     try {
       return await deleteUserDB(id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  updateUser = async({ name, password, email }) => {
+    try {
+      return await updateUserDB({ name, password, email });
     } catch (error) {
       console.error(error);
     }

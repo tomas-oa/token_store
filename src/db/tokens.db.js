@@ -1,5 +1,8 @@
 const pool = require("../db");
-
+/* 
+  obtener todos los tokens - OK
+  actualizar precio - OK
+*/
 const getAllTokensDB = async () => {
   const { rows: tokens } = await pool.query(
     "SELECT * FROM tokens"

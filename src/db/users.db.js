@@ -1,5 +1,11 @@
 const pool = require("../db");
-
+/*
+  registro usuario - TODO HASH PASSWORD
+  busqueda usuario - (múltiples) - OK 
+  detalles usuario - (sólo un user) - OK
+  borrar usuario - OK
+  actualizar usuario -OK
+*/
 const getAllUsersDB = async () => {
   const { rows: users } = await pool.query(
     "SELECT * FROM users"
@@ -28,7 +34,7 @@ const createUserDB = async ({ name, password, email }) => {
 
 const updateUserDB = async ({ name, password, email }) => {
   const { rows: user } = await pool.query(
-    // "INSERT INTO users (name, password, email) VALUES ($1, $2, $3) RETURNING *", 
+    "UPDATE users SET name = $1, password = $2, email = $3 WHERE user_id = $4 RETURNING *",
     [name, password, email]
   );
 
@@ -49,4 +55,5 @@ module.exports = {
   getUserDB,
   createUserDB,
   deleteUserDB,
+  updateUserDB,
 }
