@@ -1,6 +1,8 @@
 const {
-  getAllSalesDB
-} = require("../db/sales.db");
+  getAllSalesDB,
+  getSaleDB,
+  getPurchasesDB,
+} = require('../db/sales.db');
 
 class SalesService {
   getAllSales = async () => {
@@ -9,7 +11,7 @@ class SalesService {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   getSale = async (id) => {
     try {
@@ -17,7 +19,7 @@ class SalesService {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   getPurchases = async (id) => {
     try {
@@ -25,7 +27,7 @@ class SalesService {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 }
 
 module.exports = new SalesService();

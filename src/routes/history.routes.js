@@ -1,8 +1,8 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {
   getHistory,
-} = require("../controllers/tokens.controllers");
+} = require('../controllers/history.controllers');
 
-router.get("/", getHistory);
+router.get('/', getHistory);
 
 module.exports = router;

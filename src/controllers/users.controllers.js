@@ -1,4 +1,4 @@
-const usersServices = require("../services/users.service");
+const usersServices = require('../services/users.service');
 
 const getAllUsers = async(req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const getAllUsers = async(req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const createUser = async(req, res, next) => {
   try {
@@ -18,7 +18,7 @@ const createUser = async(req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const getUser = async(req, res, next) => {
   try {
@@ -29,7 +29,7 @@ const getUser = async(req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const deleteUser = async(req, res, next) => {
   try {
@@ -40,7 +40,7 @@ const deleteUser = async(req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 // VERIFICAR SI HAY CAMPOS VACÍOS Y HACER UPDATES SEGÚN CORRESPONDA 
 const updateUser = async(req, res, next) => {
@@ -52,7 +52,7 @@ const updateUser = async(req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 
 module.exports = {
@@ -61,4 +61,4 @@ module.exports = {
   getUser,
   deleteUser,
   updateUser,
-}
+};

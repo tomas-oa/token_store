@@ -7,8 +7,8 @@ const getHistory = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 module.exports = {
   getHistory,
-}
+};

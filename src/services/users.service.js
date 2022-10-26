@@ -4,7 +4,7 @@ const {
   getUserDB,
   deleteUserDB,
   updateUserDB,
-} = require("../db/users.db");
+} = require('../db/users.db');
 
 class UsersServices {
   getAllUsers = async() => {
@@ -13,7 +13,7 @@ class UsersServices {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   createUser = async( name, password, email ) => {
     try {
@@ -21,7 +21,7 @@ class UsersServices {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   getUser = async(id) => {
     try {
@@ -29,7 +29,7 @@ class UsersServices {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   deleteUser = async(id) => {
     try {
@@ -37,7 +37,7 @@ class UsersServices {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   updateUser = async({ name, password, email }) => {
     try {
@@ -45,7 +45,7 @@ class UsersServices {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 }
 
 module.exports = new UsersServices();

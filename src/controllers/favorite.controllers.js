@@ -8,7 +8,7 @@ const getUserFavorites = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const addUserFavorite = async (req, res, next) => {
   try {
@@ -18,7 +18,7 @@ const addUserFavorite = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const deleteUserFavorite = async (req, res, next) => {
   try {
@@ -28,7 +28,7 @@ const deleteUserFavorite = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 module.exports = {
   getUserFavorites,

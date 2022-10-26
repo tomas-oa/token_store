@@ -1,4 +1,4 @@
-const SalesService = require("../services/sales.service");
+const SalesService = require('../services/sales.service');
 
 const getAllSales = async (req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const getAllSales = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const getSale = async (req, res, next) => {
   try {
@@ -17,7 +17,7 @@ const getSale = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 const getPurchases = async (req, res, next) => {
   try {
@@ -27,7 +27,7 @@ const getPurchases = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 module.exports = {
   getAllSales,

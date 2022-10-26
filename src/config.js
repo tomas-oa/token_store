@@ -1,4 +1,4 @@
-const { config } = require("dotenv");
+const { config } = require('dotenv');
 config();
 
 module.exports = {
@@ -9,4 +9,4 @@ module.exports = {
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE,
   }
-}
+};

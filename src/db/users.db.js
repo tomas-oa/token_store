@@ -1,4 +1,4 @@
-const pool = require("../db");
+const pool = require('../db');
 /*
   registro usuario - TODO HASH PASSWORD
   busqueda usuario - (múltiples) - OK 
@@ -8,7 +8,7 @@ const pool = require("../db");
 */
 const getAllUsersDB = async () => {
   const { rows: users } = await pool.query(
-    "SELECT * FROM users"
+    'SELECT * FROM users'
   );
 
   return users;
@@ -16,39 +16,47 @@ const getAllUsersDB = async () => {
 
 const getUserDB = async ( id ) => {
   const { rows: user } = await pool.query(
-    "SELECT * FROM users WHERE user_id = $1",
+    'SELECT * FROM users WHERE id = $1',
     [id]
   );
 
   return user;
-}
+};
 
 const createUserDB = async ({ name, password, email }) => {
+  if (!name || !password || !email) {
+    return JSON.stringify({ error: 'Missing data' });
+  }
+
+  if (password.length < 8) {
+    return JSON.stringify({ error: 'Password must be at least 8 characters' });
+  }
+
   const { rows: user } = await pool.query(
-    "INSERT INTO users (name, password, email) VALUES ($1, $2, $3) RETURNING *", 
+    'INSERT INTO users (name, password, email) VALUES ($1, $2, $3) RETURNING *', 
     [name, password, email]
   );
 
   return user;
-}
+};
 
 const updateUserDB = async ({ name, password, email }) => {
   const { rows: user } = await pool.query(
-    "UPDATE users SET name = $1, password = $2, email = $3 WHERE user_id = $4 RETURNING *",
+    'UPDATE users SET name = $1, password = $2, email = $3 WHERE user_id = $4 RETURNING *',
     [name, password, email]
   );
 
   return user;
-}
+};
 
 const deleteUserDB = async( id ) => {
   const { rows: user } = await pool.query(
-    "DELETE FROM users WHERE user_id = $1 RETURNING *",
+    'DELETE FROM users WHERE user_id = $1 RETURNING *',
     [id]
   );
 
   return user;
-}
+};
 
 module.exports = {
   getAllUsersDB,
@@ -56,4 +64,4 @@ module.exports = {
   createUserDB,
   deleteUserDB,
   updateUserDB,
-}
+};

@@ -1,10 +1,12 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {
   getAllTokens,
   updatePrice,
-} = require("../controllers/tokens.controllers");
+  getToken,
+} = require('../controllers/tokens.controllers');
 
-router.get("/", getAllTokens);
-router.post("/:id", updatePrice);
+router.get('/', getAllTokens);
+router.post('/:id', updatePrice);
+router.get('/:id', getToken);
 
 module.exports = router;
