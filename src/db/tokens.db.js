@@ -11,9 +11,9 @@ const getAllTokensDB = async () => {
   return tokens;
 };
 
-const updatePriceDB = async({ price, id }) => {
+const updateTokenPriceDB = async({ price, id }) => {
   const { rows: token } = await pool.query(
-    'UPDATE tokens SET price = $1 WHERE token_id = $2 RETURNING *',
+    'UPDATE tokens SET price = $1 WHERE id = $2 RETURNING *',
     [price, id]
   );
 
@@ -49,7 +49,7 @@ const deleteTokenDB = async (id) => {
 
 module.exports = {
   getAllTokensDB,
-  updatePriceDB,
+  updateTokenPriceDB,
   getTokenDB,
   createTokenDB,
   deleteTokenDB,

@@ -12,7 +12,7 @@ const getUserFavorites = async (req, res, next) => {
 
 const addUserFavorite = async (req, res, next) => {
   try {
-    const { user_id, token_id } = req.body;
+    const { user_id, token_id } = req.params;
     const favorite = await FavoritesService.addUserFavorite({ user_id, token_id });
     res.json(favorite);
   } catch (error) {

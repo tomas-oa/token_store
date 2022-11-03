@@ -39,9 +39,9 @@ class UsersServices {
     }
   };
 
-  updateUser = async({ name, password, email }) => {
+  updateUser = async( name, password, email, id ) => {
     try {
-      return await updateUserDB({ name, password, email });
+      return await updateUserDB({ name, password, email, id });
     } catch (error) {
       console.error(error);
     }

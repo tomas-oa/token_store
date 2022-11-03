@@ -9,12 +9,12 @@ const getAllTokens = async(req, res, next) => {
   }
 };
 
-const updatePrice = async(req, res, next) => {
+const updateTokenPrice = async(req, res, next) => {
   try {
-    const { price } = req.body;
     const { id } = req.params;
+    const { price } = req.body;
 
-    const token = await TokensService.updatePrice(price, id);
+    const token = await TokensService.updateTokenPrice(price, id);
 
     res.json(token);
   } catch (error) {
@@ -36,6 +36,6 @@ const getToken = async(req, res, next) => {
 
 module.exports = {
   getAllTokens,
-  updatePrice,
+  updateTokenPrice,
   getToken,
 };

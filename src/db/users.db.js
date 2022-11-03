@@ -40,10 +40,10 @@ const createUserDB = async ({ name, password, email }) => {
   return user;
 };
 
-const updateUserDB = async ({ name, password, email }) => {
+const updateUserDB = async ({ name, password, email, id }) => {
   const { rows: user } = await pool.query(
-    'UPDATE users SET name = $1, password = $2, email = $3 WHERE user_id = $4 RETURNING *',
-    [name, password, email]
+    'UPDATE users SET name = $1, password = $2, email = $3 WHERE id = $4 RETURNING *',
+    [name, password, email, id]
   );
 
   return user;
@@ -51,7 +51,7 @@ const updateUserDB = async ({ name, password, email }) => {
 
 const deleteUserDB = async( id ) => {
   const { rows: user } = await pool.query(
-    'DELETE FROM users WHERE user_id = $1 RETURNING *',
+    'DELETE FROM users WHERE id = $1 RETURNING *',
     [id]
   );
 

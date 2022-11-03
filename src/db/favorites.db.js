@@ -8,7 +8,7 @@ const pool = require('../db');
 
 const getUserFavoritesDB = async (id) => {
   const { rows: favorites } = await pool.query(
-    'SELECT * FROM favorites WHERE user_id = $1',
+    'SELECT favorites.user_id, tokens.name, tokens.url, tokens.price, tokens.state, tokens.owner_id FROM tokens JOIN favorites ON tokens.id = favorites.token_id WHERE user_id = $1',
     [id]
   );
 
