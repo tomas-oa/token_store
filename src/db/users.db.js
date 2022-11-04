@@ -49,6 +49,7 @@ const updateUserDB = async ({ name, password, email, id }) => {
   return user;
 };
 
+// TODO: delete user + all tokens and favorites
 const deleteUserDB = async( id ) => {
   const { rows: user } = await pool.query(
     'DELETE FROM users WHERE id = $1 RETURNING *',

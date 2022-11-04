@@ -1,11 +1,30 @@
+const express = require('express');
+const app = express();
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 const { config } = require('dotenv');
 config();
 
-const express = require('express');
-const app = express();
-
 const cors = require('cors');
 const morgan = require('morgan');
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'Tokens Marketplace API',
+      version: '1.0.0',
+      description: 'Tokens Marketplace API Information',
+      contact: {
+        name: 'NFT Marketplace API',
+      },
+    },
+  },
+  apis: ['src/routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 
 app.use(cors());
 app.use(morgan('dev'));

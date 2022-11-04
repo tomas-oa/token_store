@@ -16,6 +16,10 @@ const updateTokenPrice = async(req, res, next) => {
 
     const token = await TokensService.updateTokenPrice(price, id);
 
+    if (token.length === 0) {
+      res.status(404).json({ message: 'Token not found' });
+    }
+
     res.json(token);
   } catch (error) {
     console.error(error);
@@ -28,6 +32,10 @@ const getToken = async(req, res, next) => {
 
     const token = await TokensService.getToken(id);
     
+    if (token.length === 0) {
+      res.status(404).json({ message: 'Token not found' });
+    }
+
     res.json(token);
   } catch (error) {
     console.error(error);

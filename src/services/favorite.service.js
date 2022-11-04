@@ -12,7 +12,7 @@ class FavoritesService {
     }
   };
 
-  addUserFavorite = async ({ user_id, token_id }) => {
+  addUserFavorite = async ( user_id, token_id ) => {
     try {
       return await addUserFavoriteDB({ user_id, token_id });
     } catch (error) {

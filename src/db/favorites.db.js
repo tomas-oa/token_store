@@ -11,7 +11,7 @@ const getUserFavoritesDB = async (id) => {
     'SELECT favorites.user_id, tokens.name, tokens.url, tokens.price, tokens.state, tokens.owner_id FROM tokens JOIN favorites ON tokens.id = favorites.token_id WHERE user_id = $1',
     [id]
   );
-
+  
   return favorites;
 };
 
@@ -20,6 +20,8 @@ const addUserFavoriteDB = async ({ user_id, token_id }) => {
     'INSERT INTO favorites (user_id, token_id) VALUES ($1, $2) RETURNING *',
     [user_id, token_id]
   );
+
+  console.log('favorite', favorite);
 
   return favorite;
 };
