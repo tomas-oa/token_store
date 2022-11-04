@@ -1,13 +1,10 @@
-### Funcionalidades
+# Swagger UI Documentation:
 
-- Registro usuario
-- Búsqueda usuario
-- Detalles usuario
-- Borrar usuario
-- Ventas usuario 
-- Compras usuario
-- Actualizar credenciales usuario
-- Obtener todas las ventas
-- Tokens favoritos usuario
-- Obtener todos los tokens de la plataforma 
-- Actualizar precio token
+localhost:PORT/api-docs
+default port: 5000
+---
+
+### TODO:
+- Fix delete user query: needs to delete user + user token(s) + user favorite(s).
+- Fix sales querys: needs to return buyer name, seller name, token name, token url, price, transaction date. Right now returns id's
+- Fix update user query: needs to update given param, not all of them everytime.
