@@ -27,7 +27,7 @@ CREATE TABLE sales (
     seller_id INTEGER NOT NULL,
     buyer_id INTEGER NOT NULL,
     price INTEGER NOT NULL,
-    transaction_date TIMESTAMP NOT NULL,
+    transaction_date VARCHAR(255) NOT NULL,
     FOREIGN KEY (token_id) REFERENCES tokens(id),
     FOREIGN KEY (seller_id) REFERENCES users(id),
     FOREIGN KEY (buyer_id) REFERENCES users(id)
@@ -36,7 +36,7 @@ CREATE TABLE sales (
 CREATE TABLE history(
     id SERIAL PRIMARY KEY,
     token_id INTEGER NOT NULL,
-    transaction_date TIMESTAMP NOT NULL,
+    transaction_date VARCHAR(255) NOT NULL,
     FOREIGN KEY (token_id) REFERENCES tokens(id)
 );
 

@@ -2,11 +2,11 @@ const router = require('express').Router();
 const {
   getAllSales,
   getSale,
-  getPurchases,
+  createSale,
 } = require('../controllers/sales.controller');
 
 router.get('/', getAllSales);
 router.get('/:id', getSale);
-router.get('/:id/purchases', getPurchases);
+router.post('/', createSale);
 
 module.exports = router;

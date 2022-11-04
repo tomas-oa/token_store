@@ -2,6 +2,7 @@ const {
   getAllSalesDB,
   getSaleDB,
   getPurchasesDB,
+  createSaleDB,
 } = require('../db/sales.db');
 
 class SalesService {
@@ -21,9 +22,9 @@ class SalesService {
     }
   };
 
-  getPurchases = async (id) => {
+  createSale = async ( token_id, seller_id, buyer_id, price ) => {
     try {
-      return await getPurchasesDB(id);
+      return await createSaleDB({ token_id, seller_id, buyer_id, price });
     } catch (error) {
       console.error(error);
     }

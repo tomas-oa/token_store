@@ -7,6 +7,6 @@ const {
 
 router.get('/:id', getUserFavorites);
 router.delete('/:id', deleteUserFavorite);
-router.post('/:token_id/user/:user_id', addUserFavorite);
+router.post('/', addUserFavorite);
 
 module.exports = router;

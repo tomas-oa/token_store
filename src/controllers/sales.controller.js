@@ -19,11 +19,12 @@ const getSale = async (req, res, next) => {
   }
 };
 
-const getPurchases = async (req, res, next) => {
+const createSale = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const purchases = await SalesService.getPurchases(id);
-    res.json(purchases);
+    const { token_id, seller_id, buyer_id, price } = req.body;
+
+    const sale = await SalesService.createSale( token_id, seller_id, buyer_id, price );
+    res.json(sale);
   } catch (error) {
     console.error(error);
   }
@@ -32,5 +33,5 @@ const getPurchases = async (req, res, next) => {
 module.exports = {
   getAllSales,
   getSale,
-  getPurchases,
+  createSale,
 };
