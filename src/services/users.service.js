@@ -14,7 +14,7 @@ class UsersServices {
     try {
       users = await getAllUsersDB();
     } catch (error) {
-      console.error(error);
+      return error;
     }
 
     return users;
@@ -26,7 +26,7 @@ class UsersServices {
     try {
       user = await createUserDB({ name, password, email });
     } catch (error) {
-      user = error;
+      return error.detail;
     }
 
     return user;

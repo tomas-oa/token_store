@@ -19,15 +19,15 @@ const getUserDB = async (id) => {
 
 const createUserDB = async ({ name, password, email }) => {
   if (!name || !password || !email) {
-    return JSON.stringify({ error: 'Missing data' });
+    return { error: 'Missing fields' };
   }
 
   if (password.length < 8) {
-    return JSON.stringify({ error: 'Password must be at least 8 characters' });
+    return { error: 'Password must be at least 8 characters' };
   }
 
   const { rows: user } = await pool.query(
-    'INSERT INTO users (name, password, email) VALUES ($1, $2, $3) RETURNING *',
+    'INERT INTO users (name, password, email) VALUES ($1, crypt($2, gen_salt("md5")), $3) RETURNING *',
     [name, password, email],
   );
 
