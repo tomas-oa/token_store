@@ -1,0 +1,12 @@
+insert into coins (user_id) values (1);
+insert into coins (user_id) values (2);
+insert into coins (user_id) values (3);
+insert into coins (user_id) values (4);
+insert into coins (user_id) values (5);
+insert into coins (user_id) values (6);
+insert into coins (user_id) values (7);
+insert into coins (user_id) values (8);
+insert into coins (user_id) values (9);
+insert into coins (user_id) values (10);
+insert into coins (user_id) values (11);
+insert into coins (user_id) values (12);

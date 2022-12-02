@@ -1,29 +1,26 @@
 const pool = require('../db');
-/*
-  obtener todos los tokens - OK
-  actualizar precio - OK
-*/
+
 const getAllTokensDB = async () => {
   const { rows: tokens } = await pool.query(
-    'SELECT * FROM tokens',
+    'SELECT t.id, t.name AS token_name, u.name AS owner_name, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id',
   );
 
   return tokens;
+};
+
+const getTokenDB = async (id) => {
+  const { rows: token } = await pool.query(
+    'SELECT t.id, t.name AS token_name, u.name AS owner_name, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id WHERE t.id = $1',
+    [id],
+  );
+
+  return token;
 };
 
 const updateTokenPriceDB = async ({ price, id }) => {
   const { rows: token } = await pool.query(
     'UPDATE tokens SET price = $1 WHERE id = $2 RETURNING *',
     [price, id],
-  );
-
-  return token;
-};
-
-const getTokenDB = async (id) => {
-  const { rows: token } = await pool.query(
-    'SELECT * FROM tokens WHERE id = $1',
-    [id],
   );
 
   return token;

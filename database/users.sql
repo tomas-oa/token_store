@@ -1,0 +1,12 @@
+insert into users (name, password, email) values ('bchaffen0', 'Goldenrodasdf', 'aplait0@arstechnica.com');
+insert into users (name, password, email) values ('rgreensted1', 'Redasdfg', 'djurs1@sfgate.com');
+insert into users (name, password, email) values ('shalifax2', 'Goldenrod', 'mtheis2@etsy.com');
+insert into users (name, password, email) values ('bcrowley3', 'Tealasdf', 'ibrennand3@issuu.com');
+insert into users (name, password, email) values ('kcattanach4', 'Tealasdf', 'ebrandt4@blogtalkradio.com');
+insert into users (name, password, email) values ('tfelipe5', 'Mauvasdf', 'edimic5@histats.com');
+insert into users (name, password, email) values ('clieber6', 'Aquamarine', 'gmcloughlin6@sitemeter.com');
+insert into users (name, password, email) values ('hlias7', 'Violetasdf', 'fgruszka7@squarespace.com');
+insert into users (name, password, email) values ('bsanson8', 'Violetasdf', 'lilott8@51.la');
+insert into users (name, password, email) values ('tsnookes9', 'Indigoasdf', 'fmyton9@nbcnews.com');
+insert into users (name, password, email) values ('hwillcott8', 'Goldenrodasdf', 'gcuesta8@nationalgeographic.com');
+insert into users (name, password, email) values ('lcato9', 'Aquamarine', 'ilodge9@hostgator.com');

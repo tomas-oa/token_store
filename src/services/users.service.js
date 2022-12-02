@@ -25,8 +25,9 @@ class UsersServices {
 
     try {
       user = await createUserDB({ name, password, email });
+      // console.log(user);
     } catch (error) {
-      return error.detail;
+      return (error);
     }
 
     return user;
