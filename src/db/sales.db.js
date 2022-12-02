@@ -10,8 +10,17 @@ const getAllSalesDB = async () => {
 
 const getSaleDB = async (id) => {
   const { rows: sale } = await pool.query(
-    'SELECT * FROM sales WHERE sellerId = $1',
+    'SELECT * FROM sales WHERE seller_id = $1',
     [id],
+  );
+
+  return sale;
+};
+
+const onSaleDB = async (tokenId) => {
+  const { rows: sale } = await pool.query(
+    'SELECT onsale FROM sales WHERE token_id = $1',
+    [tokenId],
   );
 
   return sale;
@@ -21,7 +30,7 @@ const createSaleDB = async ({
   tokenId, sellerId, buyerId, price,
 }) => {
   const { rows: sale } = await pool.query(
-    'INSERT INTO sales (tokenId, sellerId, buyerId, price) VALUES ($1, $2, $3, $4) RETURNING *',
+    'INSERT INTO sales (token_id, seller_id, buyer_id, price) VALUES ($1, $2, $3, $4) RETURNING *',
     [tokenId, sellerId, buyerId, price],
   );
 
@@ -50,4 +59,5 @@ module.exports = {
   getAllSalesDB,
   getSaleDB,
   createSaleDB,
+  onSaleDB,
 };

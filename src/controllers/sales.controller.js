@@ -42,6 +42,21 @@ const createSale = async (req, res) => {
   }
 };
 
+const onSale = async (req, res) => {
+  try {
+    const { tokenId } = req.params;
+    const sale = await SalesService.onSale(tokenId);
+
+    if (sale.length === 0) {
+      res.status(404).json({ message: 'Sale not found' });
+    }
+
+    res.json(sale);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   getAllSales,
   getSale,

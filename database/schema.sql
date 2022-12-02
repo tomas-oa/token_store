@@ -34,7 +34,8 @@ CREATE TABLE sales (
     seller_id INTEGER NOT NULL,
     buyer_id INTEGER NOT NULL,
     transaction_date VARCHAR(255) NOT NULL DEFAULT CURRENT_DATE,
-        FOREIGN KEY (token_id) REFERENCES tokens(id) ON DELETE CASCADE,
+    price INTEGER NOT NULL,
+    FOREIGN KEY (token_id) REFERENCES tokens(id) ON DELETE CASCADE,
     FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (buyer_id) REFERENCES users(id) ON DELETE CASCADE
 );

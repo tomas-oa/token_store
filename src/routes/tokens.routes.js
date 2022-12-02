@@ -3,6 +3,9 @@ const {
   getAllTokens,
   updateTokenPrice,
   getToken,
+  createToken,
+  deleteToken,
+  getUserTokens,
 } = require('../controllers/tokens.controllers');
 /**
 * @swagger
@@ -74,5 +77,11 @@ router.get('/:id', getToken);
 *         description: Internal server error
 */
 router.put('/:id', updateTokenPrice);
+
+router.put('/', createToken);
+
+router.delete('/:id', deleteToken);
+
+router.get('/user/:id', getUserTokens);
 
 module.exports = router;

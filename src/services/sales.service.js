@@ -3,6 +3,7 @@ const {
   getAllSalesDB,
   getSaleDB,
   createSaleDB,
+  onSaleDB,
 } = require('../db/sales.db');
 
 class SalesService {
@@ -37,6 +38,18 @@ class SalesService {
       sale = await createSaleDB({
         tokenId, sellerId, buyerId, price,
       });
+    } catch (error) {
+      console.error(error);
+    }
+
+    return sale;
+  };
+
+  onSale = async (tokenId) => {
+    let sale;
+
+    try {
+      sale = await onSaleDB(tokenId);
     } catch (error) {
       console.error(error);
     }
