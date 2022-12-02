@@ -1,6 +1,6 @@
-const FavoritesService = require ( '../services/favorite.service' );
+const FavoritesService = require('../services/favorite.service');
 
-const getUserFavorites = async (req, res, next) => {
+const getUserFavorites = async (req, res) => {
   try {
     const { id } = req.params;
     const favorites = await FavoritesService.getUserFavorites(id);
@@ -15,10 +15,10 @@ const getUserFavorites = async (req, res, next) => {
   }
 };
 
-const addUserFavorite = async (req, res, next) => {
+const addUserFavorite = async (req, res) => {
   try {
-    const { user_id, token_id } = req.body;
-    const favorite = await FavoritesService.addUserFavorite( user_id, token_id );
+    const { userId, tokenId } = req.body;
+    const favorite = await FavoritesService.addUserFavorite(userId, tokenId);
 
     if (favorite.length > 0) {
       res.status(201).json(favorite);
@@ -30,7 +30,7 @@ const addUserFavorite = async (req, res, next) => {
   }
 };
 
-const deleteUserFavorite = async (req, res, next) => {
+const deleteUserFavorite = async (req, res) => {
   try {
     const { id } = req.params;
     const favorite = await FavoritesService.deleteUserFavorite(id);

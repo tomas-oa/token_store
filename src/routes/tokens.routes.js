@@ -4,7 +4,7 @@ const {
   updateTokenPrice,
   getToken,
 } = require('../controllers/tokens.controllers');
-/** 
+/**
 * @swagger
 * /tokens:
 *   get:

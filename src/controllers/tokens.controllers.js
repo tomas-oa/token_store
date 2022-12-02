@@ -1,6 +1,6 @@
 const TokensService = require('../services/tokens.service');
 
-const getAllTokens = async(req, res, next) => {
+const getAllTokens = async (req, res) => {
   try {
     const tokens = await TokensService.getAllTokens();
     res.json(tokens);
@@ -9,7 +9,7 @@ const getAllTokens = async(req, res, next) => {
   }
 };
 
-const updateTokenPrice = async(req, res, next) => {
+const updateTokenPrice = async (req, res) => {
   try {
     const { id } = req.params;
     const { price } = req.body;
@@ -26,12 +26,12 @@ const updateTokenPrice = async(req, res, next) => {
   }
 };
 
-const getToken = async(req, res, next) => {
+const getToken = async (req, res) => {
   try {
     const { id } = req.params;
 
     const token = await TokensService.getToken(id);
-    
+
     if (token.length === 0) {
       res.status(404).json({ message: 'Token not found' });
     }

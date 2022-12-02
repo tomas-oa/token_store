@@ -1,31 +1,45 @@
+/* eslint-disable class-methods-use-this */
 const {
   getUserFavoritesDB,
   addUserFavoriteDB,
   deleteUserFavoriteDB,
 } = require('../db/favorites.db');
+
 class FavoritesService {
   getUserFavorites = async (id) => {
+    let favorites;
+
     try {
-      return await getUserFavoritesDB(id);
+      favorites = await getUserFavoritesDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return favorites;
   };
 
-  addUserFavorite = async ( user_id, token_id ) => {
+  addUserFavorite = async (userId, tokenId) => {
+    let favorite;
+
     try {
-      return await addUserFavoriteDB({ user_id, token_id });
+      favorite = await addUserFavoriteDB(userId, tokenId);
     } catch (error) {
       console.error(error);
     }
+
+    return favorite;
   };
 
   deleteUserFavorite = async (id) => {
+    let favorite;
+
     try {
-      return await deleteUserFavoriteDB(id);
+      favorite = await deleteUserFavoriteDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return favorite;
   };
 }
 

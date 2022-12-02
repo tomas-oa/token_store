@@ -1,14 +1,19 @@
+/* eslint-disable class-methods-use-this */
 const {
   getPurchasesDB,
 } = require('../db/purchases.db');
 
 class PurchasesService {
-  getPurchases = async (id) => {
+  static getPurchases = async (id) => {
+    let purchases;
+
     try {
-      return await getPurchasesDB(id);
+      purchases = await getPurchasesDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return purchases;
   };
 }
 

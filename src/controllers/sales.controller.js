@@ -1,6 +1,6 @@
 const SalesService = require('../services/sales.service');
 
-const getAllSales = async (req, res, next) => {
+const getAllSales = async (req, res) => {
   try {
     const sales = await SalesService.getAllSales();
     res.json(sales);
@@ -9,7 +9,7 @@ const getAllSales = async (req, res, next) => {
   }
 };
 
-const getSale = async (req, res, next) => {
+const getSale = async (req, res) => {
   try {
     const { id } = req.params;
     const sale = await SalesService.getSale(id);
@@ -24,18 +24,19 @@ const getSale = async (req, res, next) => {
   }
 };
 
-const createSale = async (req, res, next) => {
+const createSale = async (req, res) => {
   try {
-    const { token_id, seller_id, buyer_id, price } = req.body;
+    const {
+      tokenId, sellerId, buyerId, price,
+    } = req.body;
 
-    const sale = await SalesService.createSale( token_id, seller_id, buyer_id, price );
+    const sale = await SalesService.createSale(tokenId, sellerId, buyerId, price);
 
     if (sale.length === 0) {
       res.status(400).json({ message: 'Bad request' });
     }
 
     res.status(201).json(sale);
-
   } catch (error) {
     console.error(error);
   }

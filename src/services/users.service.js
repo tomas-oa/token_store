@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const {
   getAllUsersDB,
   createUserDB,
@@ -7,44 +8,66 @@ const {
 } = require('../db/users.db');
 
 class UsersServices {
-  getAllUsers = async() => {
+  getAllUsers = async () => {
+    let users;
+
     try {
-      return await getAllUsersDB();
+      users = await getAllUsersDB();
     } catch (error) {
       console.error(error);
     }
+
+    return users;
   };
 
-  createUser = async( name, password, email ) => {
+  createUser = async (name, password, email) => {
+    let user;
+
     try {
-      return await createUserDB({ name, password, email });
+      user = await createUserDB({ name, password, email });
     } catch (error) {
-      console.error(error);
+      user = error;
     }
+
+    return user;
   };
 
-  getUser = async(id) => {
+  getUser = async (id) => {
+    let user;
+
     try {
-      return await getUserDB(id);
+      user = await getUserDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return user;
   };
 
-  deleteUser = async(id) => {
+  deleteUser = async (id) => {
+    let user;
+
     try {
-      return await deleteUserDB(id);
+      user = await deleteUserDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return user;
   };
 
-  updateUser = async( name, password, email, id ) => {
+  updateUser = async (name, password, email, id) => {
+    let user;
+
     try {
-      return await updateUserDB({ name, password, email, id });
+      user = await updateUserDB({
+        name, password, email, id,
+      });
     } catch (error) {
       console.error(error);
     }
+
+    return user;
   };
 }
 

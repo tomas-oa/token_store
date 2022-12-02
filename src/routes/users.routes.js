@@ -23,7 +23,7 @@ const {
 */
 router.get('/', getAllUsers);
 
-/** 
+/**
 * @swagger
 * /users/{id}:
 *   get:
@@ -113,7 +113,7 @@ router.post('/', createUser);
 *                   type: string
 *                   description: Password of the user
 *       404:
-*         description: User not found 
+*         description: User not found
 */
 router.put('/:id', updateUser);
 

@@ -1,6 +1,6 @@
 const PurchasesService = require('../services/purchases.service');
 
-const getPurchases = async (req, res, next) => {
+const getPurchases = async (req, res) => {
   try {
     const { id } = req.params;
     const purchases = await PurchasesService.getPurchases(id);

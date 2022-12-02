@@ -30,7 +30,7 @@ const {
 */
 router.get('/:id', getUserFavorites);
 
-/** 
+/**
 * @swagger
 * /favorites:
 *   post:
@@ -59,7 +59,7 @@ router.get('/:id', getUserFavorites);
 */
 router.post('/', addUserFavorite);
 
-/** 
+/**
 * @swagger
 * /favorites/{id}:
 *   delete:

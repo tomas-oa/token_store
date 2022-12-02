@@ -1,55 +1,53 @@
 const usersServices = require('../services/users.service');
 
-const getAllUsers = async(req, res, next) => {
+const getAllUsers = async (req, res) => {
+  const users = await usersServices.getAllUsers();
   try {
-    const users = await usersServices.getAllUsers();
-
     if (users < 0) {
       return res.json({ error: 'No users found' });
-    } 
-
-    res.json(users);
+    }
   } catch (error) {
     console.error(error);
   }
+
+  return res.json(users);
 };
 
-const createUser = async(req, res, next) => {
-  try {
-    const { name, password, email } = req.body;
-    const user = await usersServices.createUser(name, password, email);
+const createUser = async (req, res) => {
+  const { name, password, email } = req.body;
+  const user = await usersServices.createUser(name, password, email);
 
+  try {
     if (user < 1) {
       return res.status(400).json({ message: 'Bad request' });
     }
-
-    res.json(user);
   } catch (error) {
     console.error(error);
   }
+
+  return res.json(user);
 };
 
-const getUser = async(req, res, next) => {
+const getUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await usersServices.getUser(id);
   try {
-    const { id } = req.params;
-    const user = await usersServices.getUser(id);
-
     if (user < 1) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-
     res.json(user);
   } catch (error) {
     console.error(error);
   }
+
+  return res.json(user);
 };
 
-const deleteUser = async(req, res, next) => {
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await usersServices.deleteUser(id);
   try {
-    const { id } = req.params;
-    const user = await usersServices.deleteUser(id);
-
     if (user < 1) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -58,26 +56,27 @@ const deleteUser = async(req, res, next) => {
   } catch (error) {
     console.log(error);
   }
+
+  return res.json(user);
 };
 
-// VERIFICAR SI HAY CAMPOS VACÍOS Y HACER UPDATES SEGÚN CORRESPONDA 
-const updateUser = async(req, res, next) => {
+// VERIFICAR SI HAY CAMPOS VACÍOS Y HACER UPDATES SEGÚN CORRESPONDA
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { name, password, email } = req.body;
+  const user = await usersServices.updateUser(name, password, email, id);
   try {
-    const { id } = req.params;
-    const { name, password, email } = req.body;
-    const user = await usersServices.updateUser(name, password, email, id);
-
     if (user < 1) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
-    
+
     res.json(user);
   } catch (error) {
     console.error(error);
   }
-};
 
+  return res.json(user);
+};
 
 module.exports = {
   getAllUsers,

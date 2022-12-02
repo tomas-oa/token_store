@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const router = require('express').Router();
 const {
   getAllSales,
@@ -21,7 +22,7 @@ const {
 */
 router.get('/', getAllSales);
 
-/** 
+/**
 * @swagger
 * /sales/{id}:
 *   get:
@@ -61,7 +62,7 @@ router.get('/:id', getSale);
 *         description: Bad request
 *       500:
 *         description: Internal server error
-*/ 
+*/
 router.post('/', createSale);
 
 module.exports = router;

@@ -1,33 +1,47 @@
+/* eslint-disable class-methods-use-this */
 const {
   getAllSalesDB,
   getSaleDB,
-  getPurchasesDB,
   createSaleDB,
 } = require('../db/sales.db');
 
 class SalesService {
   getAllSales = async () => {
+    let sales;
+
     try {
-      return await getAllSalesDB();
+      sales = await getAllSalesDB();
     } catch (error) {
       console.error(error);
     }
+
+    return sales;
   };
 
   getSale = async (id) => {
+    let sales;
+
     try {
-      return await getSaleDB(id);
+      sales = await getSaleDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return sales;
   };
 
-  createSale = async ( token_id, seller_id, buyer_id, price ) => {
+  createSale = async (tokenId, sellerId, buyerId, price) => {
+    let sale;
+
     try {
-      return await createSaleDB({ token_id, seller_id, buyer_id, price });
+      sale = await createSaleDB({
+        tokenId, sellerId, buyerId, price,
+      });
     } catch (error) {
       console.error(error);
     }
+
+    return sale;
   };
 }
 

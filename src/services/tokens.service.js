@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const {
   getAllTokensDB,
   updateTokenPriceDB,
@@ -6,27 +7,38 @@ const {
 
 class TokensService {
   getAllTokens = async () => {
+    let tokens;
     try {
-      return await getAllTokensDB();
+      tokens = await getAllTokensDB();
     } catch (error) {
       console.error(error);
     }
+
+    return tokens;
   };
 
-  updateTokenPrice = async ( price, id ) => {
+  updateTokenPrice = async (price, id) => {
+    let token;
+
     try {
-      return await updateTokenPriceDB({ price, id });
+      token = await updateTokenPriceDB({ price, id });
     } catch (error) {
       console.error(error);
     }
+
+    return token;
   };
 
   getToken = async (id) => {
+    let token;
+
     try {
-      return await getTokenDB(id);
+      token = await getTokenDB(id);
     } catch (error) {
       console.error(error);
     }
+
+    return token;
   };
 }
 

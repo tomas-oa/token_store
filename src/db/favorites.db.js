@@ -8,17 +8,17 @@ const pool = require('../db');
 
 const getUserFavoritesDB = async (id) => {
   const { rows: favorites } = await pool.query(
-    'SELECT favorites.user_id, tokens.name, tokens.url, tokens.price, tokens.state, tokens.owner_id FROM tokens JOIN favorites ON tokens.id = favorites.token_id WHERE user_id = $1',
-    [id]
+    'SELECT favorites.userId, tokens.name, tokens.url, tokens.price, tokens.state, tokens.owner_id FROM tokens JOIN favorites ON tokens.id = favorites.tokenId WHERE userId = $1',
+    [id],
   );
-  
+
   return favorites;
 };
 
-const addUserFavoriteDB = async ({ user_id, token_id }) => {
+const addUserFavoriteDB = async ({ userId, tokenId }) => {
   const { rows: favorite } = await pool.query(
-    'INSERT INTO favorites (user_id, token_id) VALUES ($1, $2) RETURNING *',
-    [user_id, token_id]
+    'INSERT INTO favorites (userId, tokenId) VALUES ($1, $2) RETURNING *',
+    [userId, tokenId],
   );
 
   console.log('favorite', favorite);
@@ -29,7 +29,7 @@ const addUserFavoriteDB = async ({ user_id, token_id }) => {
 const deleteUserFavoriteDB = async (id) => {
   const { rows: favorite } = await pool.query(
     'DELETE FROM favorites WHERE id = $1 RETURNING *',
-    [id]
+    [id],
   );
 
   return favorite;

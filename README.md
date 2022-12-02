@@ -14,3 +14,7 @@ default port: 5000
 - Fix update user query: needs to update given param, not all of them everytime.
 - Hash user password
 - Overfetching password on get user/users req
+
+
+## Cambios entrega 2:
+- Cambios en esquema 
