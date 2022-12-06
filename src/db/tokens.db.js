@@ -2,7 +2,7 @@ const pool = require('../db');
 
 const getAllTokensDB = async () => {
   const { rows: tokens } = await pool.query(
-    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id',
+    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale, t.created_by AS creator_id, c.name AS created_by FROM tokens t JOIN users u ON t.owner_id = u.id JOIN (SELECT u.name, t.created_by FROM tokens t JOIN users u ON t.created_by = u.id) AS c ON t.created_by = c.created_by',
   );
 
   return tokens;
@@ -10,7 +10,7 @@ const getAllTokensDB = async () => {
 
 const getTokenDB = async (id) => {
   const { rows: token } = await pool.query(
-    'SELECT t.id, t.name AS token_name, fav.fav_count, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id JOIN (SELECT f.token_id, count(token_id) AS fav_count FROM favorites f WHERE token_id = $1 GROUP BY(f.token_id)) AS fav ON t.id = fav.token_id',
+    'SELECT t.id, t.name AS token_name, fav.fav_count, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale, t.created_by AS creator_id, c.name AS created_by  FROM tokens t JOIN users u ON t.owner_id = u.id JOIN (SELECT f.token_id, count(token_id) AS fav_count FROM favorites f WHERE token_id = $1 GROUP BY(f.token_id)) AS fav ON t.id = fav.token_id JOIN (SELECT u.name, t.created_by FROM tokens t JOIN users u ON t.created_by = u.id) AS c ON t.created_by = c.created_by WHERE t.id = $1',
     [id],
   );
 
