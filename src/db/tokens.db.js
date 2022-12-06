@@ -10,7 +10,7 @@ const getAllTokensDB = async () => {
 
 const getTokenDB = async (id) => {
   const { rows: token } = await pool.query(
-    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id WHERE t.id = $1',
+    'SELECT t.id, t.name AS token_name, fav.fav_count, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id JOIN (SELECT f.token_id, count(token_id) AS fav_count FROM favorites f WHERE token_id = $1 GROUP BY(f.token_id)) AS fav ON t.id = fav.token_id',
     [id],
   );
 
