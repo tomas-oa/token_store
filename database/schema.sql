@@ -25,7 +25,9 @@ CREATE TABLE tokens (
     price INTEGER NOT NULL,
     onsale BOOLEAN NOT NULL,
     created_by INTEGER NOT NULL,
-    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+    description VARCHAR(255) NOT NULL,
+    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
 );
 
 
