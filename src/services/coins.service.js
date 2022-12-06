@@ -2,6 +2,7 @@
 const {
   getUserCoinsDB,
   getAllCoinsDB,
+  getTopCoinsDB,
 } = require('../db/coins.db');
 
 class CoinsService {
@@ -22,6 +23,18 @@ class CoinsService {
 
     try {
       coins = await getAllCoinsDB();
+    } catch (error) {
+      console.error(error);
+    }
+
+    return coins;
+  };
+
+  getTopCoins = async () => {
+    let coins;
+
+    try {
+      coins = await getTopCoinsDB();
     } catch (error) {
       console.error(error);
     }

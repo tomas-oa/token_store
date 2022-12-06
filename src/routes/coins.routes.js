@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
   getUserCoins,
   getAllCoins,
+  getTopCoins,
 } = require('../controllers/coins.controller');
 
 /**
@@ -46,5 +47,7 @@ router.get('/:id', getUserCoins);
 *         description: Internal server error
 */
 router.get('/', getAllCoins);
+
+router.get('/top', getTopCoins);
 
 module.exports = router;

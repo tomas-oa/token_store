@@ -2,7 +2,7 @@ const pool = require('../db');
 
 const getAllTokensDB = async () => {
   const { rows: tokens } = await pool.query(
-    'SELECT t.id, t.name AS token_name, u.name AS owner_name, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id',
+    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id',
   );
 
   return tokens;
@@ -10,7 +10,7 @@ const getAllTokensDB = async () => {
 
 const getTokenDB = async (id) => {
   const { rows: token } = await pool.query(
-    'SELECT t.id, t.name AS token_name, u.name AS owner_name, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id WHERE t.id = $1',
+    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale FROM tokens t JOIN users u ON t.owner_id = u.id WHERE t.id = $1',
     [id],
   );
 

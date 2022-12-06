@@ -10,3 +10,8 @@ insert into favorites (token_id, user_id) values (9, 10);
 insert into favorites (token_id, user_id) values (10, 8);
 insert into favorites (token_id, user_id) values (11, 9);
 insert into favorites (token_id, user_id) values (12, 9);
+insert into favorites (token_id, user_id) values (10, 2);
+insert into favorites (token_id, user_id) values (10, 1);
+insert into favorites (token_id, user_id) values (10, 7);
+insert into favorites (token_id, user_id) values (10, 3);
+insert into favorites (token_id, user_id) values (5, 4);

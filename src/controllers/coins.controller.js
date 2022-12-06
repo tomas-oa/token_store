@@ -29,7 +29,22 @@ const getAllCoins = async (req, res) => {
   }
 };
 
+const getTopCoins = async (req, res) => {
+  try {
+    const coins = await CoinsService.getTopCoins();
+
+    if (coins.length > 0) {
+      res.json(coins);
+    } else {
+      res.status(404).json({ message: 'No coins found' });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   getUserCoins,
   getAllCoins,
+  getTopCoins,
 };
