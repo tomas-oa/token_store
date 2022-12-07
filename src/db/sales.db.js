@@ -2,7 +2,7 @@ const pool = require('../db');
 
 const getAllSalesDB = async () => {
   const { rows: sales } = await pool.query(
-    'SELECT * FROM sales',
+    'SELECT sales.id as sale_id, buyer.id as buyer_id, buyer.name as buyer_name, seller.id as seller_id, seller.name as seller_name, tokens.id as token_id, tokens.name as token_name, sales.price, sales.transaction_date FROM sales JOIN users AS buyer ON sales.buyer_id = buyer.id INNER JOIN users as seller ON sales.seller_id = seller.id INNER JOIN tokens ON sales.token_id = tokens.id',
   );
 
   return sales;
@@ -10,7 +10,7 @@ const getAllSalesDB = async () => {
 
 const getSaleDB = async (id) => {
   const { rows: sale } = await pool.query(
-    'SELECT * FROM sales WHERE seller_id = $1',
+    'SELECT sales.id, buyer.name as buyer_name, seller.name as seller_name, tokens.name as token_name, sales.price, sales.transaction_date FROM sales JOIN users AS buyer ON sales.buyer_id = buyer.id INNER JOIN users as seller ON sales.seller_id = seller.id INNER JOIN tokens ON sales.token_id = tokens.id WHERE seller.id = $1',
     [id],
   );
 
