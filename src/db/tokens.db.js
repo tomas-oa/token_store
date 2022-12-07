@@ -27,12 +27,14 @@ const updateTokenPriceDB = async ({ price, id }) => {
 };
 
 const createTokenDB = async ({
-  name, url, price, state, ownerId,
+  name, ownerId, url, price, onsale, description,
 }) => {
   const { rows: token } = await pool.query(
-    'INSERT INTO tokens (name, url, price, state, owner_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-    [name, url, price, state, ownerId],
+    'INSERT INTO tokens (name, owner_id, url, price, onsale, created_by, description) VALUES ($1, $2, $3, $4, $5, $2, $6) RETURNING *',
+    [name, ownerId, url, price, onsale, description],
   );
+
+  console.log(token);
 
   return token;
 };

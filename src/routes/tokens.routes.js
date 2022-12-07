@@ -78,7 +78,7 @@ router.get('/:id', getToken);
 */
 router.put('/:id', updateTokenPrice);
 
-router.put('/', createToken);
+router.post('/', createToken);
 
 router.delete('/:id', deleteToken);
 

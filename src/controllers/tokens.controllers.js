@@ -45,11 +45,11 @@ const getToken = async (req, res) => {
 const createToken = async (req, res) => {
   try {
     const {
-      name, url, price, state, ownerId,
+      name, ownerId, url, price, onsale, description,
     } = req.body;
 
     const token = await TokensService.createToken({
-      name, url, price, state, ownerId,
+      name, ownerId, url, price, onsale, description,
     });
 
     res.json(token);

@@ -45,13 +45,13 @@ class TokensService {
   };
 
   createToken = async ({
-    name, url, price, state, ownerId,
+    name, ownerId, url, price, onsale, description,
   }) => {
     let token;
 
     try {
       token = await createTokenDB({
-        name, url, price, state, ownerId,
+        name, ownerId, url, price, onsale, description,
       });
     } catch (error) {
       console.error(error);
