@@ -17,16 +17,7 @@ const getAllCoinsDB = async () => {
   return coins;
 };
 
-const getTopCoinsDB = async () => {
-  const { rows: coins } = await pool.query(
-    'SELECT c.user_id, c.amount, u.name FROM coins c JOIN users u ON c.user_id = u.id ORDER BY c.amount DESC LIMIT 3',
-  );
-
-  return coins;
-};
-
 module.exports = {
   getUserCoinsDB,
   getAllCoinsDB,
-  getTopCoinsDB,
 };
