@@ -2,7 +2,7 @@ const pool = require('../db');
 
 const getAllTokensDB = async () => {
   const { rows: tokens } = await pool.query(
-    'SELECT t.id, t.name AS token_name, u.name AS owner_name, u.id as owner_id, t.url, t.price, t.onsale, t.created_by AS creator_id, c.name AS created_by, t.description FROM tokens t JOIN users u ON t.owner_id = u.id JOIN (SELECT u.name, t.created_by FROM tokens t JOIN users u ON t.created_by = u.id) AS c ON t.created_by = c.created_by',
+    'select t.id, t.name as token_name, t.url, t.price, t.onsale, t.created_by as creator_id, t.description, u.id as owner_id, u.name as owner_name from tokens t join users u on t.owner_id = u.id',
   );
 
   return tokens;
