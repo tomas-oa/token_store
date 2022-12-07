@@ -15,4 +15,4 @@ default port: 5000
 - Top 3 usuarios con más coins
 - Token con más favoritos
 
-![gru_nft](./imgs/grunft.jpg =250x250)
+![gru_nft](./imgs/grunft.jpg)
