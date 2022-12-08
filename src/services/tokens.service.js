@@ -20,11 +20,11 @@ class TokensService {
     return tokens;
   };
 
-  updateTokenPrice = async (price, id) => {
+  updateTokenPrice = async (price, description, name, onsale, id) => {
     let token;
 
     try {
-      token = await updateTokenPriceDB({ price, id });
+      token = await updateTokenPriceDB(price, description, name, onsale, id );
     } catch (error) {
       console.error(error);
     }

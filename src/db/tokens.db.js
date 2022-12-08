@@ -17,10 +17,10 @@ const getTokenDB = async (id) => {
   return token;
 };
 
-const updateTokenPriceDB = async ({ price, id }) => {
+const updateTokenPriceDB = async ( price, description, name, onsale, id ) => {
   const { rows: token } = await pool.query(
-    'UPDATE tokens SET price = $1 WHERE id = $2 RETURNING *',
-    [price, id],
+    'UPDATE tokens SET price = $1, description = $2, name = $3, onsale = $4 WHERE id = $5 RETURNING *',
+    [price, description, name, onsale, id],
   );
 
   return token;

@@ -12,9 +12,9 @@ const getAllTokens = async (req, res) => {
 const updateTokenPrice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { price } = req.body;
+    const { price, description, name, onsale } = req.body;
 
-    const token = await TokensService.updateTokenPrice(price, id);
+    const token = await TokensService.updateTokenPrice(price, description, name, onsale, id);
 
     if (token.length === 0) {
       return res.status(404).json({ message: 'Token not found' });
