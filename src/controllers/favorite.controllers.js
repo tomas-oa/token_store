@@ -5,17 +5,16 @@ const getUserFavorites = async (req, res) => {
     const { id } = req.params;
     const favorites = await FavoritesService.getUserFavorites(id);
 
-    if (favorites.length > 0) {
       res.json(favorites);
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
+    
   } catch (error) {
     console.error(error);
   }
 };
 
 const addUserFavorite = async (req, res) => {
+
+  console.log(req.body)
   try {
     const { userId, tokenId } = req.body;
     const favorite = await FavoritesService.addUserFavorite(userId, tokenId);

@@ -2,16 +2,16 @@ const pool = require('../db');
 
 const getUserFavoritesDB = async (id) => {
   const { rows: favorites } = await pool.query(
-    'SELECT t.id, t.id as token_id, f.user_id, t.name, t.url, t.price, t.onsale FROM tokens t JOIN favorites f ON t.id = f.token_id WHERE user_id = $1',
+    'SELECT  f.id, t.id as token_id, f.user_id, t.name, t.url, t.price, t.onsale FROM tokens t JOIN favorites f ON t.id = f.token_id WHERE user_id = $1',
     [id],
   );
 
   return favorites;
 };
 
-const addUserFavoriteDB = async ({ userId, tokenId }) => {
+const addUserFavoriteDB = async ( userId, tokenId ) => {
   const { rows: favorite } = await pool.query(
-    'INSERT INTO favorites (userId, tokenId) VALUES ($1, $2) RETURNING *',
+    'INSERT INTO favorites (user_id, token_id) VALUES ($1, $2) RETURNING *',
     [userId, tokenId],
   );
 
