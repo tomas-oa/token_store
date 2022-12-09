@@ -2,7 +2,7 @@ const pool = require('../db');
 
 const getMostFavoriteTokenDB = async () => {
   const { rows: token } = await pool.query(
-    'SELECT u.name, u.email, c.token_count FROM users u JOIN (SELECT t.owner_id, COUNT(t.owner_id) AS token_count FROM tokens t GROUP BY t.owner_id LIMIT 1) AS c ON u.id = c.owner_id',
+    'select t.*, tmax.count as fav_count from tokens t join (select token_id, count(token_id) from favorites group by token_id order by count desc limit 1) as tmax on t.id = tmax.token_id;',
   );
 
   return token;
