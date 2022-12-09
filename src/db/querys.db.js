@@ -18,8 +18,8 @@ const getUserWithMostCoinsDB = async () => {
 
 const getMostSoldTokenDB = async () => {
   const { rows: token } = await pool.query(
-    'SELECT * FROM tokens t JOIN (SELECT s.token_id, COUNT(s.token_id) AS sales_count FROM sales s GROUP BY (s.token_id) ORDER BY (s.token_id) DESC LIMIT 1) AS c ON t.id = c.token_id',
-  );
+    'select * from tokens t join (select token_id, count(token_id) from sales group by token_id order by count desc limit 1) as tmax on tmax.token_id = t.id;'
+    );
 
   return token;
 };
