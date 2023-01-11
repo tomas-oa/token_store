@@ -2,31 +2,29 @@ const router = require('express').Router();
 const {
   getUserCoins,
   getAllCoins,
-  getTopCoins,
 } = require('../controllers/coins.controller');
 
+// get coins of a user
 /**
 * @swagger
 * /coins/{id}:
 *  get:
-*   summary: Get user coins
-*  description: Get all coins of a user
-*  tags:
-*    - Coins
-*  parameters:
-*    - in: path
-*      name: id
-*      required: true
-*      description: Id of the user
-*      schema:
-*        type: integer
-*  responses:
+*   summary: Get coins of a user
+*   description: Get coins of a user
+*   parameters:
+*   - in: path
+*     name: id
+*     schema:
+*       type: integer
+*     required: true
+*     description: Numeric ID of the user to get coins
+*   tags:
+*     - Coins
+*   responses:
 *    200:
 *      description: Success
 *    404:
-*      description: User not found
-*    500:
-*      description: Internal server error
+*     description: User not found
 */
 router.get('/:id', getUserCoins);
 
@@ -47,7 +45,5 @@ router.get('/:id', getUserCoins);
 *         description: Internal server error
 */
 router.get('/', getAllCoins);
-
-router.get('/top', getTopCoins);
 
 module.exports = router;

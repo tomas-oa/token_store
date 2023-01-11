@@ -9,7 +9,7 @@ const getUserFavoritesDB = async (id) => {
   return favorites;
 };
 
-const addUserFavoriteDB = async ( userId, tokenId ) => {
+const addUserFavoriteDB = async (userId, tokenId) => {
   const { rows: favorite } = await pool.query(
     'INSERT INTO favorites (user_id, token_id) VALUES ($1, $2) RETURNING *',
     [userId, tokenId],
