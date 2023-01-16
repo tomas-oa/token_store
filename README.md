@@ -1,4 +1,4 @@
-# Token store API 1.0.0
+# Token store API
 An OpenSea-like backend project built with Postgres, Express and Node
 
 ## Introduction
